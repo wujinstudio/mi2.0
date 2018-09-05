@@ -187,21 +187,6 @@ window.onload=function () {
         }
         list1.style.transform=`translate(${-wh*time1}px)`;
     };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /////////////////////////////////////////////////////////
     let btnl=document.querySelector(".box-hd .top .liftlight .before i");
     let btnr=document.querySelector(".box-hd .top .liftlight .after i");
@@ -222,5 +207,46 @@ window.onload=function () {
             times=0;
         }
         listx.style.transform=`translate(${-w*times}px)`;
+    }
+    ///////////////////////////////////////////
+    // let num=document.querySelectorAll(".banner ul li a");
+    // let son=document.querySelectorAll(".banner ul .asidebox .mid .dd");
+    // console.log(num,son);
+    // for(let i=0;i<num.length;i++){
+    //     num[i].onmouseover=function () {
+    //         son[i].style.display="block";
+    //     }
+    //     // num[i].onmouseout=function(){
+    //         // son[i].style.display="none";
+    //     // }
+    // }
+
+
+
+    let nam=document.querySelectorAll(".page-home .top ul a");
+    let son=document.querySelectorAll(".page-home .bottom ul .two");
+    console.log(nam,son);
+    nam[0].classList.add("active");
+    son[0].style.display="block";
+    for(let i=0;i<nam.length;i++){
+        nam[i].onmouseover=function () {
+            for(let j=0;j<nam.length;j++){
+                son[j].style.display="none";
+                nam[j].classList.remove("active");
+            }
+            son[i].style.display="block";
+            nam[i].classList.add("active");
+        }
+    }
+
+
+
+    let back=document.querySelector(".fix .one");
+    console.log(back);
+    back.onclick=function () {
+        animate(document.body,{scrollTop:0});
+        animate(document.documentElement,{scrollTop:0});
+        // document.body.scrollTop=0;
+        // document.documentElement.scrollTop=0;
     }
 };
