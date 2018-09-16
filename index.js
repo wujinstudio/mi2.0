@@ -72,11 +72,11 @@ window.onload=function () {
 
     let lis=document.querySelector(".contento ul li");
     let book=document.querySelectorAll(".contento ul li .book .ab");
-    let dot=document.querySelectorAll(".contento ul li .pages .ctrile");
-    let left=document.querySelector(".contento ul li .control-left");
-    let right=document.querySelector(".contento ul li .control-right");
+    let dot=document.querySelectorAll(".contento ul li .ctrile.bh");
+    let left=document.querySelector(".contento ul li .control-left.kp");
+    let right=document.querySelector(".contento ul li .control-right.kp");
     let widtha=parseInt(getComputedStyle(lis,null).width);
-    console.log(book);
+    console.log(book,dot,left,right,widtha);
     function frist(book,dot,left,right,widtha){
         book[0].style.left=0;
         dot[0].classList.add("activd");
@@ -132,6 +132,7 @@ window.onload=function () {
                 return;
             }
             moveR();
+
         };
         for(let i=0;i<dot.length;i++){
             dot[i].onclick=function () {
@@ -209,17 +210,22 @@ window.onload=function () {
         listx.style.transform=`translate(${-w*times}px)`;
     }
     ///////////////////////////////////////////
-    // let num=document.querySelectorAll(".banner ul li a");
-    // let son=document.querySelectorAll(".banner ul .asidebox .mid .dd");
-    // console.log(num,son);
-    // for(let i=0;i<num.length;i++){
-    //     num[i].onmouseover=function () {
-    //         son[i].style.display="block";
-    //     }
+    let num=document.querySelectorAll(".banner ul li");
+    let son1=document.querySelectorAll(".banner ul .asidebox");
+    // let son2=document.querySelectorAll(".banner ul .asidebox .mid");
+    // let son3=document.querySelectorAll(".banner ul .asidebox .mid dd")
+    // console.log(num,son1);
+    for(let i=0;i<num.length;i++){
+        num[i].onmouseover=function () {
+            son1[i].style.display="flex";
+            // son2[i].style.display="block";
+            // son3[i].style.display="block";
+        }
     //     // num[i].onmouseout=function(){
-    //         // son[i].style.display="none";
+    //     //     son1[i].style.display="none";
+    //     //     son1[i].style.display="none";
     //     // }
-    // }
+    }
 
 
 
@@ -240,12 +246,50 @@ window.onload=function () {
     }
 
 
+    let fath=document.querySelectorAll(".head .nav .item .text.xm");
+    let sj=document.querySelectorAll(".ttop");
+    console.log(fath,sj);
+    // fath[0].classList.remove("active");
+    // sj[0].style.display="none";
+    // sj[0].style.zIndex="999";
+    for(let i=0;i<fath.length;i++) {
+        fath[i].onmouseenter = function () {
+            for (let j = 0; j < fath.length; j++) {
+                // sj[j].style.display = "none";
+                fath[j].classList.remove("active");
+                sj[j].style.zIndex = 0;
+                sj[j].style.height="230px";
+                sj[j].style.borderTop="1px solid #e0e0e0"
+            }
+            // sj[i].style.display = "flex";
+
+            fath[i].classList.add("active");
+            sj[i].style.zIndex = 999;
+            sj[i].style.borderTop="1px solid #e0e0e0"
+        };
+        fath[i].onmouseleave = function () {
+            for(let j=0;j<fath.length;j++){
+                sj[j].style.height=0;
+                sj[j].style.borderTop=0;
+            }
+            // sj[i].style.display = "none";
+
+        };
+    }
 
     let back=document.querySelector(".fix .one");
     console.log(back);
-    back.onclick=function () {
-        animate(document.body,{scrollTop:0});
-        animate(document.documentElement,{scrollTop:0});
+    document.onscroll=function () {
+        if(document.body.scrollTop || document.documentElement.scrollTop>=1000){
+            back.style.display="block";
+        }else{
+            back.style.display="none";
+        }
+        back.onclick=function () {
+            animate(document.body,{scrollTop:0});
+            animate(document.documentElement,{scrollTop:0});
+        }
+
         // document.body.scrollTop=0;
         // document.documentElement.scrollTop=0;
     }
